@@ -10,7 +10,7 @@ const app = express();
 app.use(morgan('common'));
 
 const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
