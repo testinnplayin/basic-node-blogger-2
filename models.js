@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
 	title: {type: String, required: true},
-	content: String,
+	content: {type: String},
 	author: {
 		firstname: String,
 		lastname: String
@@ -11,7 +11,7 @@ const blogSchema = mongoose.Schema({
 });
 
 blogSchema.virtual('authorFullname').get(function() {
-	return `${this.author.firstname} ${this.author.lastname}`;
+	return `${this.author.firstname} ${this.author.lastname}`.trim();
 });
 
 blogSchema.methods.apiRepr = function() {

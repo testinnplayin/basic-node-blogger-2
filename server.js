@@ -26,11 +26,9 @@ app.get('/posts', (req, res) => {
 		.find()
 		.exec()
 		.then(blogs => {
-			res.json({
-				blogs: blogs.map(function(blog) {
-					blog.apiRepr();
-				})
-			});
+			res.json(blogs.map(function(blog) {
+				blog.apiRepr();
+			}));
 		})
 		.catch(err => {
 			console.error(err);
